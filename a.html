@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievement Info Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            color: #333;
+            min-height: 100vh;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        body::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+
+        .header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-image {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .header-image img {
+            max-height: 120px;
+            width: auto;
+        }
+
+        .page-title {
+            color: black;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 1.5rem;
+            background-color: #FED12E;
+        }
+
+        .content {
+            margin-top: 200px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .achievement-card {
+            width: 400px;
+            height: 300px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 15px;
+        }
+
+        .achievement-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10%;
+        }
+
+        .card-back {
+            background-color: #FEE99D;
+            color: black;
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .card-back::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+
+        .card-back-content {
+            width: 100%;
+        }
+
+        .card-back h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .achievement-description {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .header-image img {
+                max-height: 100px;
+            }
+
+            .page-title {
+                font-size: 1.3rem;
+                padding: 10px 0;
+            }
+
+            .content {
+                margin-top: 170px;
+            }
+
+            .achievement-card {
+                width: 90%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-image img {
+                max-height: 80px;
+            }
+
+            .page-title {
+                font-size: 1.2rem;
+            }
+
+            .content {
+                margin-top: 150px;
+                padding: 10px;
+            }
+            
+            .achievement-card {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="header-image">
+            <img src="/AI&DS.jpg" alt="AI & DS Department">
+        </div>
+        <h1 class="page-title">My Achievements</h1>
+    </div>
+
+    <div class="content">
+        <div class="achievements-container">
+            <!-- Achievement 1 -->
+            <div class="achievement-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="1.jpg" alt="Code Master Achievement">
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <h3>Code Master</h3>
+                            <p class="achievement-description">Awarded for completing 50 coding challenges with a 95% or higher success rate. This achievement demonstrates strong problem-solving skills and coding proficiency.</p>
+                            <p><strong>Requirements:</strong> Solve 50 challenges with minimal hints and high accuracy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement 2 -->
+            <div class="achievement-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="1.jpg" alt="Fast Learner Achievement">
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <h3>Fast Learner</h3>
+                            <p class="achievement-description">Completed three advanced courses in under 30 days. This shows exceptional dedication and ability to quickly grasp complex concepts.</p>
+                            <p><strong>Requirements:</strong> Finish three 20+ hour courses within one month.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement 3 -->
+            <div class="achievement-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="1.jpg" alt="Community Helper Achievement">
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <h3>Community Helper</h3>
+                            <p class="achievement-description">Provided helpful answers to 100+ questions in the community forum. This achievement recognizes your willingness to help others and share knowledge.</p>
+                            <p><strong>Requirements:</strong> Post 100 helpful responses that receive positive feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement 4 -->
+            <div class="achievement-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="1.jpg" alt="Innovator Achievement">
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <h3>Innovator</h3>
+                            <p class="achievement-description">Created an original project that solves a real-world problem. This achievement celebrates creativity and the ability to apply skills in practical ways.</p>
+                            <p><strong>Requirements:</strong> Design and implement a unique solution to a documented problem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click functionality for mobile devices
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.achievement-card');
+
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    // For mobile, toggle the flip with a click
+                    if (window.innerWidth <= 768) {
+                        this.classList.toggle('flipped');
+                    }
+                });
+            });
+
+            // Add a simple animation when page loads
+            setTimeout(() => {
+                document.body.style.opacity = 1;
+            }, 100);
+        });
+    </script>
+</body>
+</html>
